@@ -8,9 +8,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-def saveToFile(message):
-    with open("test.txt", "a") as f:
-        message = message + "\n"
+def saveToFile(location, message):
+    fileName = location + ".txt"
+    with open(fileName, "a") as f:
+        message = message + ",\n"
         f.write(message.encode("gbk"))
         f.close()
     return None
@@ -24,11 +25,11 @@ def getWeather():
     r = requests.get(url)
     w = r.json()["results"][0]["daily"]
 
-    todayJsonString = json.dumps(w[0])
-    saveToFile(todayJsonString)
+    todayJsonString = json.dumps(w[0], ensure_ascii=False)
+    saveToFile(location, todayJsonString)
 
-    today = "今天是%s，白天%s，晚上%s，最高气温%s，最低气温%s" % (w[0]["date"], w[0]["text_day"], w[0]["text_night"], w[0]["high"], w[0]["low"])
-    tomorrow = "明天是%s，白天%s，晚上%s，最高气温%s，最低气温%s" % (w[1]["date"], w[1]["text_day"], w[1]["text_night"], w[1]["high"], w[1]["low"])
+    today = "今天是%s，白天%s，晚上%s，气温%s-%s" % (w[0]["date"], w[0]["text_day"], w[0]["text_night"], w[0]["high"], w[0]["low"])
+    tomorrow = "明天是%s，白天%s，晚上%s，气温%s-%s" % (w[1]["date"], w[1]["text_day"], w[1]["text_night"], w[1]["high"], w[1]["low"])
     message = tomorrow
     return message
 
@@ -44,4 +45,5 @@ def sendMessage(message):
 
 if __name__ == "__main__":
     weather = getWeather()
+    # print(weather)
     # sendMessage(weather)
