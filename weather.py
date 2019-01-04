@@ -2,8 +2,10 @@
 
 import requests
 import json
-from twilio.rest import Client
 import sys
+from twilio.rest import Client
+import git
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
