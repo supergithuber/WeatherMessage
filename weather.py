@@ -4,7 +4,7 @@ import requests
 import json
 import sys
 from twilio.rest import Client
-import git
+from git import Repo
 
 
 reload(sys)
@@ -44,8 +44,16 @@ def sendMessage(message):
     # 注意to和from_两个参数所代表的手机号，都需要带有国家代码。如中国大陆手机号即+86开头再加上自己的手机号。from_中的号码直接复制twilio提供的号码即可
     client.messages.create(to="+8615626474791", from_="+18508208255", body=message)
     return None
-
+def pushToRemote():
+    repo = Repo('.')
+    index = repo.index
+    index.add(['.'])
+    index.commit('get today weather')
+    repo.remotes.origin.pull()
+    repo.remotes.origin.push()
+    return None
 if __name__ == "__main__":
     weather = getWeather()
-    # print(weather)
+    print(weather)
+    # pushToRemote()
     # sendMessage(weather)
