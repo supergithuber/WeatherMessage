@@ -3,6 +3,7 @@
 import requests
 import json
 import sys
+import os
 from twilio.rest import Client
 from git import Repo
 
@@ -46,9 +47,9 @@ def sendMessage(message):
     return None
 def pushToRemote():
     ## 这里要配置绝对路径
-    repo = Repo('../WeatherMessage')
+    repo = Repo(os.getcwd())
     git = repo.git
-    git.add(['.'])
+    git.add([os.getcwd() + '/.'])
     git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
@@ -57,4 +58,4 @@ if __name__ == "__main__":
     weather = getWeather()
     print(weather)
     pushToRemote()
-    sendMessage(weather)
+    # sendMessage(weather)
