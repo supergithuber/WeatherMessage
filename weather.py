@@ -46,10 +46,12 @@ def sendMessage(message):
     client.messages.create(to="+8615626474791", from_="+18508208255", body=message)
     return None
 def pushToRemote():
-    ## 这里要配置绝对路径
-    repo = Repo(os.getcwd())
+    ## 如果使用crond配置定时任务，这里要配置绝对路径，否则就用currentPath取代absolutePath
+    absolutePath = "~/Documents/pyProject/WeatherMessage"
+    currentPath = os.getcwd()
+    repo = Repo(absolutePath)
     git = repo.git
-    git.add([os.getcwd() + '/.'])
+    git.add([absolutePath + '/.'])
     git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
