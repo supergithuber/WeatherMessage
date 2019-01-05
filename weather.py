@@ -63,5 +63,5 @@ def sendMessage(message):
 if __name__ == "__main__":
     weather = getWeather()
     print(weather)
-    pushToRemote()
-    # sendMessage(weather)
+    # pushToRemote()
+    sendMessage(weather)
