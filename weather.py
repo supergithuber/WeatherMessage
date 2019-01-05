@@ -45,15 +45,15 @@ def sendMessage(message):
     client.messages.create(to="+8615626474791", from_="+18508208255", body=message)
     return None
 def pushToRemote():
-    repo = Repo('.')
-    index = repo.index
-    index.add(['.'])
-    index.commit('get today weather')
+    repo = Repo('../WeatherMessage')
+    git = repo.git
+    git.add(['.'])
+    git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
     return None
 if __name__ == "__main__":
     weather = getWeather()
     print(weather)
-    # pushToRemote()
+    pushToRemote()
     # sendMessage(weather)
