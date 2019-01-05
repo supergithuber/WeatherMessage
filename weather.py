@@ -19,13 +19,15 @@ def saveToFile(location, message):
         f.close()
     return None
 
-def pushToRemote():
+def pushToRemote(location):
     ## 如果使用crond配置定时任务，这里要配置绝对路径，否则就用currentPath取代absolutePath
     absolutePath = "~/Documents/pyProject/WeatherMessage"
     currentPath = os.getcwd()
+    fileName = location + ".txt"
+
     repo = Repo(absolutePath)
     git = repo.git
-    git.add([absolutePath + '/'])
+    git.add([absolutePath + '/' + fileName])
     git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
@@ -43,6 +45,7 @@ def getWeather():
     todayJsonString = json.dumps(w[0], ensure_ascii=False)
     saveToFile(location, todayJsonString)
 
+    pushToRemote(location)
 
     today = "今天是%s，白天%s，晚上%s，气温%s-%s" % (w[0]["date"], w[0]["text_day"], w[0]["text_night"], w[0]["high"], w[0]["low"])
     tomorrow = "明天是%s，白天%s，晚上%s，气温%s-%s" % (w[1]["date"], w[1]["text_day"], w[1]["text_night"], w[1]["high"], w[1]["low"])
@@ -62,5 +65,4 @@ def sendMessage(message):
 if __name__ == "__main__":
     weather = getWeather()
     print(weather)
-    pushToRemote()
     # sendMessage(weather)
