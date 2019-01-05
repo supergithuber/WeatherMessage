@@ -45,13 +45,14 @@ def sendMessage(message):
     # 注意to和from_两个参数所代表的手机号，都需要带有国家代码。如中国大陆手机号即+86开头再加上自己的手机号。from_中的号码直接复制twilio提供的号码即可
     client.messages.create(to="+8615626474791", from_="+18508208255", body=message)
     return None
+
 def pushToRemote():
     ## 如果使用crond配置定时任务，这里要配置绝对路径，否则就用currentPath取代absolutePath
     absolutePath = "~/Documents/pyProject/WeatherMessage"
     currentPath = os.getcwd()
     repo = Repo(absolutePath)
     git = repo.git
-    git.add([absolutePath + '/.'])
+    git.add([absolutePath + '/*'])
     git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
