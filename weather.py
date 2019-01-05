@@ -45,7 +45,8 @@ def sendMessage(message):
     client.messages.create(to="+8615626474791", from_="+18508208255", body=message)
     return None
 def pushToRemote():
-    repo = Repo('../WeatherMessage')
+    ## 这里要配置绝对路径
+    repo = Repo('~/Documents/pyProject/WeatherMessage/')
     git = repo.git
     git.add(['.'])
     git.commit('-m', 'get today weather')
