@@ -11,6 +11,11 @@ from git import Repo
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+## git 部分
+
+
+## 天气部分
+
 def saveToFile(location, message):
     fileName = location + ".txt"
     with open(fileName, "a") as f:
