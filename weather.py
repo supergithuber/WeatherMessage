@@ -12,7 +12,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 ## 配置项目路径
-PROJECT_PATH = "~/Documents/pyProject/WeatherMessage"
+PROJECT_PATH = "/root/Documents/pyProject/WeatherMessage"
 
 ## git 部分
 
