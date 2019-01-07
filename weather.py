@@ -54,7 +54,7 @@ def getWeather():
 
     today = "今天是%s，白天%s，晚上%s，气温%s-%s" % (w[0]["date"], w[0]["text_day"], w[0]["text_night"], w[0]["high"], w[0]["low"])
     tomorrow = "明天是%s，白天%s，晚上%s，气温%s-%s" % (w[1]["date"], w[1]["text_day"], w[1]["text_night"], w[1]["high"], w[1]["low"])
-    message = tomorrow
+    message = today
     return message
 
 def sendMessage(message):
@@ -69,6 +69,6 @@ def sendMessage(message):
 
 if __name__ == "__main__":
     weather = getWeather()
-    print(weather)
+    # print(weather)
     # pushToRemote()
     sendMessage(weather)
