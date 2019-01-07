@@ -11,13 +11,16 @@ from git import Repo
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+## 配置项目路径
+PROJECT_PATH = "~/Documents/pyProject/WeatherMessage"
+
 ## git 部分
 
 
 ## 天气部分
 
 def saveToFile(location, message):
-    fileName = location + ".txt"
+    fileName = PROJECT_PATH + "/" + location + ".txt"
     with open(fileName, "a") as f:
         message = message + ",\n"
         f.write(message.encode("gbk"))
@@ -26,12 +29,11 @@ def saveToFile(location, message):
 
 def pushToRemote():
     ## 如果使用crond配置定时任务，这里要配置绝对路径，否则就用currentPath取代absolutePath
-    absolutePath = "~/Documents/pyProject/WeatherMessage"
     currentPath = os.getcwd()
 
-    repo = Repo(absolutePath)
+    repo = Repo(PROJECT_PATH)
     git = repo.git
-    git.add([absolutePath + '/'])
+    git.add([PROJECT_PATH + '/'])
     git.commit('-m', 'get today weather')
     repo.remotes.origin.pull()
     repo.remotes.origin.push()
