@@ -141,3 +141,4 @@
 {"text_night": "雷阵雨", "wind_speed": "10", "wind_direction_degree": "", "wind_direction": "无持续风向", "high": "30", "precip": "", "low": "25", "wind_scale": "2", "date": "2019-05-25", "code_night": "11", "code_day": "11", "text_day": "雷阵雨"},
 {"text_night": "雷阵雨", "wind_speed": "10", "wind_direction_degree": "", "wind_direction": "无持续风向", "high": "29", "precip": "", "low": "24", "wind_scale": "2", "date": "2019-05-26", "code_night": "11", "code_day": "14", "text_day": "中雨"},
 {"text_night": "中雨", "wind_speed": "10", "wind_direction_degree": "", "wind_direction": "无持续风向", "high": "28", "precip": "", "low": "25", "wind_scale": "2", "date": "2019-05-27", "code_night": "14", "code_day": "14", "text_day": "中雨"},
+{"text_night": "中雨", "wind_speed": "10", "wind_direction_degree": "", "wind_direction": "无持续风向", "high": "28", "precip": "", "low": "23", "wind_scale": "2", "date": "2019-05-28", "code_night": "14", "code_day": "15", "text_day": "大雨"},
