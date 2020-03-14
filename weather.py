@@ -21,7 +21,7 @@ PROJECT_PATH = "/root/Documents/PythonProjects/WeatherMessage"
 
 def saveToFile(location, message):
     fileName = PROJECT_PATH + "/" + location + ".txt"
-    with open(fileName, "a") as f:
+    with open(fileName, "wb") as f:
         message = message + ",\n"
         f.write(message.encode("gbk"))
         f.close()
