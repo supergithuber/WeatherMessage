@@ -9,7 +9,7 @@ from git import Repo
 from importlib import reload
 
 reload(sys)
-sys.setdefaultencoding('utf-8')
+## sys.setdefaultencoding('utf-8')
 
 ## 配置项目路径
 PROJECT_PATH = "/root/Documents/pyProject/WeatherMessage"
