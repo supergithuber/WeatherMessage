@@ -13,7 +13,6 @@ reload(sys)
 
 ## 配置项目路径
 PROJECT_PATH = "/root/Documents/PythonProjects/WeatherMessage"
-
 ## git 部分
 
 
@@ -23,7 +22,7 @@ def saveToFile(location, message):
     fileName = PROJECT_PATH + "/" + location + ".txt"
     with open(fileName, "wb") as f:
         message = message + ",\n"
-        f.write(message.encode("gbk"))
+        f.write(message.encode("utf-8"))
         f.close()
     return None
 
