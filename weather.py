@@ -6,7 +6,7 @@ import sys
 import os
 from twilio.rest import Client
 from git import Repo
-
+from importlib import reload
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
