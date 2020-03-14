@@ -71,5 +71,5 @@ six==1.12.0
 smmap2==2.0.5
 tornado==5.0.2
 twilio==6.22.1
-urllib3==1.22
+urllib3==1.24.2
 xattr==0.6.4
